@@ -8,6 +8,7 @@ require('dotenv').config();
 * Set up routes.
 */
 
+app.get('/postcode', require('./controllers/postcode'));
 app.get('/health', require('./controllers/health'));
 
 const PORT = process.env.PORT || 3000;

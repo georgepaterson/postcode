@@ -3,7 +3,7 @@ const postcode = express.Router();
 const {postcodeValidator, postcodeValidatorExistsForCountry} = require('postcode-validator');
 
 /*
-* Set up routes.
+* 
 */
 
 postcode.get('/postcode/:country/:postcode', function (req, res) {
@@ -12,16 +12,16 @@ postcode.get('/postcode/:country/:postcode', function (req, res) {
   if(postcodeValidatorExistsForCountry(country)) {
     if(postcodeValidator(code, country)) {
       res.send({
-        status: 'Ok: Supported postcode for ' + country
+        status: 'Ok: Valid postcode for ' + country
       });
     } else {
       res.send({
-        status: 'Error: Unsupported postcode for ' + country
+        status: 'Error: Invalid postcode for ' + country
       });
     }
   } else {
     res.send({
-      status: 'Error: Unsupported country'
+      status: 'Error: Invalid country'
     });
   }
 });
@@ -30,13 +30,19 @@ postcode.get('/postcode/:postcode', function (req, res) {
   const code = req.params.postcode.toUpperCase();
   if(postcodeValidator(code, 'GB')) {
     res.send({
-      status: 'Ok: Supported postcode for GB'
+      status: 'Ok: Valid postcode for GB'
     });
   } else {
     res.send({
-      status: 'Error: Unsupported postcode for GB'
+      status: 'Error: Invalid postcode for GB'
     });
   }
 });
+
+
+/*
+* TODO:
+* If valid postcode in service area, return true.
+*/
 
 module.exports = postcode;

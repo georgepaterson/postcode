@@ -2,7 +2,7 @@
 * Check that the server is healthy.
 */
 
-async function health(req, res) {
+async function health() {
   return true;
 }
 

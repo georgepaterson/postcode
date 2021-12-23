@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon src/server.js --watch src --exec 'npm run lint'",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js --watch src --exec 'npm run lint'",
     "test": "npx cypress open",
     "lint": "eslint src/**",
     "fix": "eslint src/** --fix"

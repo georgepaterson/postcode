@@ -28,21 +28,21 @@ postcode.get('/postcode/:country/:postcode', (req, res) => {
           description: `supported postcode for ${response} appointments`,
         });
       } else {
-        res.send(422, {
+        res.send(200, {
           valid: false,
           description: `unsupported postcode for ${response} appointments`,
         });
       }
     } else {
-      res.send(422, {
+      res.send(200, {
         valid: false,
         description: `invalid postcode for ${response} appointments`,
       });
     }
   } else {
-    res.send(422, {
+    res.send(200, {
       valid: false,
-      description: `invalid postcode for ${response} appointments`,
+      description: `invalid country code ${response} for appointments`,
     });
   }
 });
@@ -61,13 +61,13 @@ postcode.get('/postcode/:postcode', (req, res) => {
         description: `supported postcode for uk appointments`,
       });
     } else {
-      res.send(422, {
+      res.send(200, {
         valid: false,
         description: `unsupported postcode for uk appointments`,
       });
     }
   } else {
-    res.send(422, {
+    res.send(200, {
       valid: false,
       description: `invalid postcode for uk appointments`,
     });

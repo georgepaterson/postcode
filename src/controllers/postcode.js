@@ -68,14 +68,14 @@ postcode.get('/postcode/:postcode', (req, res) => {
         .status(200)
         .json({
           valid: true,
-          description: `supported postcode for uk appointments`,
+          description: 'supported postcode for uk appointments',
         });
     } else {
       res
         .status(200)
         .json({
           valid: false,
-          description: `unsupported postcode for uk appointments`,
+          description: 'unsupported postcode for uk appointments',
         });
     }
   } else {
@@ -83,7 +83,7 @@ postcode.get('/postcode/:postcode', (req, res) => {
       .status(200)
       .json({
         valid: false,
-        description: `invalid postcode for uk appointments`,
+        description: 'invalid postcode for uk appointments',
       });
   }
 });

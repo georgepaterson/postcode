@@ -23,27 +23,35 @@ postcode.get('/postcode/:country/:postcode', (req, res) => {
       // UK test case for postcode using an if statement.
       // When further testing is required, this can be replaced with a switch statement.
       if (uk.test(code)) {
-        res.send(200, {
-          valid: true,
-          description: `supported postcode for ${response} appointments`,
-        });
+        res
+          .status(200)
+          .json({
+            valid: true,
+            description: `supported postcode for ${response} appointments`,
+          });
       } else {
-        res.send(200, {
-          valid: false,
-          description: `unsupported postcode for ${response} appointments`,
-        });
+        res
+          .status(200)
+          .json({
+            valid: false,
+            description: `unsupported postcode for ${response} appointments`,
+          });
       }
     } else {
-      res.send(200, {
-        valid: false,
-        description: `invalid postcode for ${response} appointments`,
-      });
+      res
+        .status(200)
+        .json({
+          valid: false,
+          description: `invalid postcode for ${response} appointments`,
+        });
     }
   } else {
-    res.send(200, {
-      valid: false,
-      description: `invalid country code ${response} for appointments`,
-    });
+    res
+      .status(200)
+      .json({
+        valid: false,
+        description: `invalid country code ${response} for appointments`,
+      });
   }
 });
 
@@ -56,21 +64,27 @@ postcode.get('/postcode/:postcode', (req, res) => {
   const code = req.params.postcode.toUpperCase();
   if (postcodeValidator(code, 'UK')) {
     if (uk.test(code)) {
-      res.send(200, {
-        valid: true,
-        description: `supported postcode for uk appointments`,
-      });
+      res
+        .status(200)
+        .json({
+          valid: true,
+          description: `supported postcode for uk appointments`,
+        });
     } else {
-      res.send(200, {
-        valid: false,
-        description: `unsupported postcode for uk appointments`,
-      });
+      res
+        .status(200)
+        .json({
+          valid: false,
+          description: `unsupported postcode for uk appointments`,
+        });
     }
   } else {
-    res.send(200, {
-      valid: false,
-      description: `invalid postcode for uk appointments`,
-    });
+    res
+      .status(200)
+      .json({
+        valid: false,
+        description: `invalid postcode for uk appointments`,
+      });
   }
 });
 
